@@ -14,7 +14,7 @@ public class BinarySearchTests {
     private final int[] tabOfLengthOne = {0};
 
     @Test
-    public void shouldSayThatElementIsFoundAndIsInPositionOfIndexZero() {
+    public void shouldSayThatElementIsFoundAndIsInPositionOfIndexZeroInTabOfLengthZero() {
         int elementToFind = 0;
         SearchResult searchResult = BinarySearch.search(elementToFind, tabOfLengthOne);
         assertTrue(searchResult.isFound());
@@ -22,7 +22,7 @@ public class BinarySearchTests {
     }
 
     @Test
-    public void shouldSayThatElementIsNotFoundAndReturnIndexMinusOne() {
+    public void shouldSayThatElementIsNotFoundAndReturnIndexMinusOneInTabOfLengthZero() {
         int elementToFind = 1;
         SearchResult searchResult = BinarySearch.search(elementToFind, tabOfLengthOne);
         assertFalse(searchResult.isFound());
