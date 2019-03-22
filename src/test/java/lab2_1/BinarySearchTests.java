@@ -23,7 +23,7 @@ public class BinarySearchTests {
     }
 
     @Test
-    public void shouldSayThatElementIsNotFoundAndReturnIndexMinusOneInTabOfLengthZero() {
+    public void shouldSayThatElementIsNotFoundInTabOfLengthZeroAndReturnIndexMinusOne() {
         int elementToFind = 1;
         SearchResult searchResult = BinarySearch.search(elementToFind, tabOfLengthOne);
         assertFalse(searchResult.isFound());
@@ -52,6 +52,14 @@ public class BinarySearchTests {
         SearchResult searchResult = BinarySearch.search(elementToFind, biggerTab);
         assertTrue(searchResult.isFound());
         assertEquals(elementToFind, biggerTab[searchResult.getPosition()]);
+    }
+
+    @Test
+    public void shouldSayThatElementIsNotFoundInBiggerTabAndReturnMinusOne() {
+        int elementToFind = -1;
+        SearchResult searchResult = BinarySearch.search(elementToFind, biggerTab);
+        assertFalse(searchResult.isFound());
+        assertEquals(-1, searchResult.getPosition());
     }
 
 }
