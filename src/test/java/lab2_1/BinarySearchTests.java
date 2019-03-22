@@ -38,4 +38,12 @@ public class BinarySearchTests {
         assertEquals(elementToFind, biggerTab[searchResult.getPosition()]);
     }
 
+    @Test
+    public void shouldSayThatElementIsFoundAndIsInLastPositionInBiggerTab() {
+        int elementToFind = biggerTab[biggerTab.length - 1];
+        SearchResult searchResult = BinarySearch.search(elementToFind, biggerTab);
+        assertTrue(searchResult.isFound());
+        assertEquals(elementToFind, biggerTab[searchResult.getPosition()]);
+    }
+
 }
