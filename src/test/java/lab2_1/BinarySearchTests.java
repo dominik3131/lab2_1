@@ -46,4 +46,12 @@ public class BinarySearchTests {
         assertEquals(elementToFind, biggerTab[searchResult.getPosition()]);
     }
 
+    @Test
+    public void shouldSayThatElementIsFoundAndIsInMiddlePositionInBiggerTab() {
+        int elementToFind = biggerTab[(biggerTab.length - 1) / 2];
+        SearchResult searchResult = BinarySearch.search(elementToFind, biggerTab);
+        assertTrue(searchResult.isFound());
+        assertEquals(elementToFind, biggerTab[searchResult.getPosition()]);
+    }
+
 }
