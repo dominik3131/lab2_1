@@ -62,4 +62,9 @@ public class BinarySearchTests {
         assertEquals(-1, searchResult.getPosition());
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrownIllegalArgumentExceptionOnWrongParameters() {
+        BinarySearch.search(0, new int[0]);
+    }
+
 }
