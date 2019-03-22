@@ -1,8 +1,8 @@
 package lab2_1;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
@@ -18,48 +18,48 @@ public class BinarySearchTests {
     public void shouldSayThatElementIsFoundAndIsInPositionOfIndexZeroInTabOfLengthZero() {
         int elementToFind = 0;
         SearchResult searchResult = BinarySearch.search(elementToFind, tabOfLengthOne);
-        assertTrue(searchResult.isFound());
-        assertEquals(elementToFind, tabOfLengthOne[searchResult.getPosition()]);
+        assertThat(searchResult.isFound(), is(equalTo(true)));
+        assertThat(elementToFind, is(equalTo(tabOfLengthOne[searchResult.getPosition()])));
     }
 
     @Test
     public void shouldSayThatElementIsNotFoundInTabOfLengthZeroAndReturnIndexMinusOne() {
         int elementToFind = 1;
         SearchResult searchResult = BinarySearch.search(elementToFind, tabOfLengthOne);
-        assertFalse(searchResult.isFound());
-        assertEquals(-1, searchResult.getPosition());
+        assertThat(searchResult.isFound(), is(equalTo(false)));
+        assertThat(searchResult.getPosition(), is(equalTo(-1)));
     }
 
     @Test
     public void shouldSayThatElementIsFoundAndIsInPositionOfIndexZeroInBiggerTab() {
         int elementToFind = biggerTab[0];
         SearchResult searchResult = BinarySearch.search(elementToFind, biggerTab);
-        assertTrue(searchResult.isFound());
-        assertEquals(elementToFind, biggerTab[searchResult.getPosition()]);
+        assertThat(searchResult.isFound(), is(equalTo(true)));
+        assertThat(elementToFind, is(equalTo(biggerTab[searchResult.getPosition()])));
     }
 
     @Test
     public void shouldSayThatElementIsFoundAndIsInLastPositionInBiggerTab() {
         int elementToFind = biggerTab[biggerTab.length - 1];
         SearchResult searchResult = BinarySearch.search(elementToFind, biggerTab);
-        assertTrue(searchResult.isFound());
-        assertEquals(elementToFind, biggerTab[searchResult.getPosition()]);
+        assertThat(searchResult.isFound(), is(equalTo(true)));
+        assertThat(elementToFind, is(equalTo(biggerTab[searchResult.getPosition()])));
     }
 
     @Test
     public void shouldSayThatElementIsFoundAndIsInMiddlePositionInBiggerTab() {
         int elementToFind = biggerTab[(biggerTab.length - 1) / 2];
         SearchResult searchResult = BinarySearch.search(elementToFind, biggerTab);
-        assertTrue(searchResult.isFound());
-        assertEquals(elementToFind, biggerTab[searchResult.getPosition()]);
+        assertThat(searchResult.isFound(), is(equalTo(true)));
+        assertThat(elementToFind, is(equalTo(biggerTab[searchResult.getPosition()])));
     }
 
     @Test
     public void shouldSayThatElementIsNotFoundInBiggerTabAndReturnMinusOne() {
         int elementToFind = -1;
         SearchResult searchResult = BinarySearch.search(elementToFind, biggerTab);
-        assertFalse(searchResult.isFound());
-        assertEquals(-1, searchResult.getPosition());
+        assertThat(searchResult.isFound(), is(equalTo(false)));
+        assertThat(searchResult.getPosition(), is(equalTo(-1)));
     }
 
     @Test(expected = IllegalArgumentException.class)
