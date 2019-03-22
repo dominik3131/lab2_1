@@ -12,6 +12,7 @@ import edu.iis.mto.bsearch.SearchResult;
 public class BinarySearchTests {
 
     private final int[] tabOfLengthOne = {0};
+    private final int[] biggerTab = {0, 1, 2, 3, 4, 5, 6, 7, 8};
 
     @Test
     public void shouldSayThatElementIsFoundAndIsInPositionOfIndexZeroInTabOfLengthZero() {
@@ -28,4 +29,13 @@ public class BinarySearchTests {
         assertFalse(searchResult.isFound());
         assertEquals(-1, searchResult.getPosition());
     }
+
+    @Test
+    public void shouldSayThatElementIsFoundAndIsInPositionOfIndexZeroInBiggerTab() {
+        int elementToFind = biggerTab[0];
+        SearchResult searchResult = BinarySearch.search(elementToFind, biggerTab);
+        assertTrue(searchResult.isFound());
+        assertEquals(elementToFind, biggerTab[searchResult.getPosition()]);
+    }
+
 }
