@@ -11,53 +11,56 @@ import edu.iis.mto.bsearch.SearchResult;
 
 public class BinarySearchTests {
 
-    private final int[] tabOfLengthOne = {0};
-    private final int[] biggerTab = {0, 1, 2, 3, 4, 5, 6, 7, 8};
-
     @Test
     public void shouldSayThatElementIsFoundAndIsInPositionOfIndexZeroInTabOfLengthZero() {
         int elementToFind = 0;
-        SearchResult searchResult = BinarySearch.search(elementToFind, tabOfLengthOne);
+        int[] sequence = {0};
+        SearchResult searchResult = BinarySearch.search(elementToFind, sequence);
         assertThat(searchResult.isFound(), is(equalTo(true)));
-        assertThat(elementToFind, is(equalTo(tabOfLengthOne[searchResult.getPosition()])));
+        assertThat(elementToFind, is(equalTo(sequence[searchResult.getPosition()])));
     }
 
     @Test
     public void shouldSayThatElementIsNotFoundInTabOfLengthZeroAndReturnIndexMinusOne() {
         int elementToFind = 1;
-        SearchResult searchResult = BinarySearch.search(elementToFind, tabOfLengthOne);
+        int[] sequence = {0};
+        SearchResult searchResult = BinarySearch.search(elementToFind, sequence);
         assertThat(searchResult.isFound(), is(equalTo(false)));
         assertThat(searchResult.getPosition(), is(equalTo(-1)));
     }
 
     @Test
-    public void shouldSayThatElementIsFoundAndIsInPositionOfIndexZeroInBiggerTab() {
-        int elementToFind = biggerTab[0];
-        SearchResult searchResult = BinarySearch.search(elementToFind, biggerTab);
+    public void shouldSayThatElementIsFoundAndIsInPositionOfIndexZeroInsequence() {
+        int elementToFind = 0;
+        int[] sequence = {0, 1, 2, 3, 4, 5, 6, 7, 8};
+        SearchResult searchResult = BinarySearch.search(elementToFind, sequence);
         assertThat(searchResult.isFound(), is(equalTo(true)));
-        assertThat(elementToFind, is(equalTo(biggerTab[searchResult.getPosition()])));
+        assertThat(elementToFind, is(equalTo(sequence[searchResult.getPosition()])));
     }
 
     @Test
-    public void shouldSayThatElementIsFoundAndIsInLastPositionInBiggerTab() {
-        int elementToFind = biggerTab[biggerTab.length - 1];
-        SearchResult searchResult = BinarySearch.search(elementToFind, biggerTab);
+    public void shouldSayThatElementIsFoundAndIsInLastPositionInsequence() {
+        int[] sequence = {3, 53, 1124, 214124, 523124};
+        int elementToFind = sequence[sequence.length - 1];
+        SearchResult searchResult = BinarySearch.search(elementToFind, sequence);
         assertThat(searchResult.isFound(), is(equalTo(true)));
-        assertThat(elementToFind, is(equalTo(biggerTab[searchResult.getPosition()])));
+        assertThat(elementToFind, is(equalTo(sequence[searchResult.getPosition()])));
     }
 
     @Test
-    public void shouldSayThatElementIsFoundAndIsInMiddlePositionInBiggerTab() {
-        int elementToFind = biggerTab[(biggerTab.length - 1) / 2];
-        SearchResult searchResult = BinarySearch.search(elementToFind, biggerTab);
+    public void shouldSayThatElementIsFoundAndIsInMiddlePositionInsequence() {
+        int[] sequence = {0, 12, 123, 235, 574, 1245, 12436, 123333, 981725, 127842784, 1278427841};
+        int elementToFind = sequence[(sequence.length - 1) / 2];
+        SearchResult searchResult = BinarySearch.search(elementToFind, sequence);
         assertThat(searchResult.isFound(), is(equalTo(true)));
-        assertThat(elementToFind, is(equalTo(biggerTab[searchResult.getPosition()])));
+        assertThat(elementToFind, is(equalTo(sequence[searchResult.getPosition()])));
     }
 
     @Test
-    public void shouldSayThatElementIsNotFoundInBiggerTabAndReturnMinusOne() {
+    public void shouldSayThatElementIsNotFoundInsequenceAndReturnMinusOne() {
         int elementToFind = -1;
-        SearchResult searchResult = BinarySearch.search(elementToFind, biggerTab);
+        int[] sequence = {0, 1, 54, 76, 124, 6457, 1243436, 21986};
+        SearchResult searchResult = BinarySearch.search(elementToFind, sequence);
         assertThat(searchResult.isFound(), is(equalTo(false)));
         assertThat(searchResult.getPosition(), is(equalTo(-1)));
     }

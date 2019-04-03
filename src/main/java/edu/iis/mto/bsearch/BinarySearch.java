@@ -42,9 +42,7 @@ public class BinarySearch {
                     end = center - 1;
                 }
             }
-
         }
         return result;
     }
-
 }
